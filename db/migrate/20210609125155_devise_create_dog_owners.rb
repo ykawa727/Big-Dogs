@@ -32,12 +32,12 @@ class DeviseCreateDogOwners < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
       
-      t.string :last_name
-      t.string :first_name
-      t.string :nickname
-      t.string :postal_code
-      t.string :address
-      t.string :phone_number
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :nickname, null: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
+      t.string :phone_number, null: false
 
       t.timestamps null: false
       

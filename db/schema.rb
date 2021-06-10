@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_060823) do
+ActiveRecord::Schema.define(version: 2021_06_10_081240) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,28 @@ ActiveRecord::Schema.define(version: 2021_06_10_060823) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_administrators_on_email", unique: true
     t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "dog_owner_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cognitions", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "dog_owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dog_categories", force: :cascade do |t|
+    t.integer "size"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dog_owners", force: :cascade do |t|
@@ -40,6 +62,48 @@ ActiveRecord::Schema.define(version: 2021_06_10_060823) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_dog_owners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_dog_owners_on_reset_password_token", unique: true
+  end
+
+  create_table "dogs", force: :cascade do |t|
+    t.integer "dog_owner_id"
+    t.integer "dog_category_id"
+    t.string "name"
+    t.integer "age"
+    t.integer "gender"
+    t.text "introduction"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.integer "administrator_id"
+    t.integer "dog_owner_id"
+    t.string "name"
+    t.string "email"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "dog_owner_id"
+    t.integer "dog_id"
+    t.integer "category"
+    t.string "title"
+    t.text "body"
+    t.string "image_id"
+    t.string "keyword"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.integer "answer_id"
+    t.integer "dog_owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
