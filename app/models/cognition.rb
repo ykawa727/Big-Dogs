@@ -1,0 +1,2 @@
+class Cognition < ApplicationRecord
+end
