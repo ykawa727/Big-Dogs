@@ -1,5 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :administrators
-  devise_for :dog_owners
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'homes#top'
+  devise_for :dog_owners, controllers: {
+    sessions: 'dog_owners/sessions',
+    passwords: 'dog_owners/passwords',
+    registrations: 'dog_owners/registrations'
+  }
+  devise_for :administrators, controllers: {
+    sessions: 'admin/sessions',
+    passwords: 'admin/passwords',
+    registrations: 'admin/registrations'
+  }
+
+    namespace :admin do
+      resources :dog_owners
+      resources :dog_categories
+    end
+
+      get '/about' => 'homes#about'
+      get '/dog_owners/withdrawal' => 'dog_owners#withdrawal'
+      patch '/dog_owners/withdrawal' =>'dog_owners#dest'
+      resources :dog_owners
+      resources :dogs
+      resources :posts
 end
