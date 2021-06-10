@@ -1,0 +1,2 @@
+class DogCategory < ApplicationRecord
+end
