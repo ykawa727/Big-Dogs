@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when DogOwner
-      # user_posts_path
+      root_path
     when Administrator
       # admin_user_posts_path
     end

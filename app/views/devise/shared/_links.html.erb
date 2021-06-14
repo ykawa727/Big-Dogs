@@ -1,9 +1,11 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <!--リロードしてからログインボタン押さないとログインできないという不具合が発生したので、その解決として「'data-turbolinks': false」を追記-->
+  <%= link_to "Log in", new_session_path(resource_name), 'data-turbolinks': false %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <!--リロードしてからログインボタン押さないとログインできないという不具合が発生したので、その解決として「'data-turbolinks': false」を追記-->
+  <%= link_to "Sign up", new_registration_path(resource_name), 'data-turbolinks': false %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
