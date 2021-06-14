@@ -1,1 +1,50 @@
-<マイページ>
+<div class="container">
+  <div class="row mt-3">
+    <h4>マイページ</h4>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-2">飼い主さん情報</div>
+      <div class="col-sm-2">
+        <%= link_to "編集する", edit_dog_owner_path(current_dog_owner), class: "btn btn-secondary" %>
+      </div>
+  </div>
+
+  <div class="row mt-3">
+    <table class="table table-bordered">
+      <tr>
+        <th>プロフィール画像</th>
+        <td><%= image_tag('sample-author1.jpg') %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @dog_owner.last_name + " " + @dog_owner.first_name %></td>
+      </tr>
+      <tr>
+        <th>ニックネーム</th>
+        <td><%= @dog_owner.nickname %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @dog_owner.email %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @dog_owner.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @dog_owner.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @dog_owner.phone_number %></td>
+      </tr>
+      <tr>
+        <th>自己紹介</th>
+        <td><%= @dog_owner.introduction %></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
