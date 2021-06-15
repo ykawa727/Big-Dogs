@@ -24,9 +24,8 @@ Rails.application.routes.draw do
     end
 
       get '/about' => 'homes#about'
-      get '/dog_owners/withdrawal' => 'dog_owners#withdrawal'
-      patch '/dog_owners/withdrawal' =>'dog_owners#dest'
-      resources :dog_owners, only: [:show, :edit, :update]
+      get '/dog_owners/withdrawal' => 'dog_owners#withdrawal', as: 'withdrawal_dog_owner'
+      resources :dog_owners, only: [:show, :edit, :update, :destroy]
       resources :dogs
       resources :posts
 end
