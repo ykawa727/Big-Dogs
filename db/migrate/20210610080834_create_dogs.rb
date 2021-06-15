@@ -8,7 +8,7 @@ class CreateDogs < ActiveRecord::Migration[5.2]
       t.integer :gender
       t.text :introduction
       t.string :image
-      
+
       t.timestamps
     end
   end

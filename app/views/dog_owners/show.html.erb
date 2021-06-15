@@ -6,7 +6,9 @@
   <div class="row">
       <div class="col-sm-2">飼い主さん情報</div>
       <div class="col-sm-2">
-        <%= link_to "編集する", edit_dog_owner_path(current_dog_owner), class: "btn btn-secondary" %>
+        <% if @dog_owner.id == current_dog_owner.id %>
+          <%= link_to "編集する", edit_dog_owner_path(current_dog_owner), class: "btn btn-secondary" %>
+        <% end %>
       </div>
   </div>
 
@@ -14,7 +16,7 @@
     <table class="table table-bordered">
       <tr>
         <th>プロフィール画像</th>
-        <td><%= image_tag('sample-author1.jpg') %></td>
+        <td><%= attachment_image_tag @dog_owner, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
       </tr>
       <tr>
         <th>氏名</th>
@@ -45,6 +47,16 @@
         <td><%= @dog_owner.introduction %></td>
       </tr>
     </table>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">ワンちゃん情報</div>
+    <div class="col-sm-2">
+      <%= link_to "編集する", edit_dog_path(current_dog_owner.dogs), class: "btn btn-secondary" %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to "追加する", new_dog_path(current_dog_owner.dogs), class: "btn btn-secondary" %>
+    </div>
   </div>
 
 </div>
