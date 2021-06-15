@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
 
   root 'homes#top'
-  devise_for :dog_owners, controllers: {
-    sessions: 'dog_owners/sessions',
-    passwords: 'dog_owners/passwords',
-    registrations: 'dog_owners/registrations'
-  }
-  devise_for :administrators, controllers: {
-    sessions: 'admin/sessions',
-    passwords: 'admin/passwords',
-    registrations: 'admin/registrations'
-  }
+  devise_for :dog_owners
+  #devise画面をカスタマイズしないため、ここからコメントアウト
+  #   controllers: {
+  #   sessions: 'dog_owners/sessions#new',
+  #   passwords: 'dog_owners/registrations#passwords',
+  #   registrations: 'dog_owners/registrations#new'
+  #}
+  #ここまでコメントアウト
+  devise_for :administrators
+  #devise画面をカスタマイズしないため、ここからコメントアウト
+  #  controllers: {
+  #  sessions: 'administrators/sessions',
+  #  passwords: 'administrators/passwords',
+  #  registrations: 'administrators/registrations'
+  #}
+  #ここまでコメントアウト
 
     namespace :admin do
       resources :dog_owners
@@ -20,7 +26,7 @@ Rails.application.routes.draw do
       get '/about' => 'homes#about'
       get '/dog_owners/withdrawal' => 'dog_owners#withdrawal'
       patch '/dog_owners/withdrawal' =>'dog_owners#dest'
-      resources :dog_owners
+      resources :dog_owners, only: [:show, :edit, :update]
       resources :dogs
       resources :posts
 end
