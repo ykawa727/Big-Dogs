@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when DogOwner
       root_path
     when Administrator
-      # admin_user_posts_path
+      admin_dog_categories_path
     end
   end
 

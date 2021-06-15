@@ -40,6 +40,19 @@
               <li class="nav-item text-light">
                 <%= link_to "マイページ", dog_owner_path(current_dog_owner), class: "fas fa-users nav-link text-light" %>
               </li>
+            <% elsif administrator_signed_in? %>
+              <li class="nav-item text-light">
+                <%= link_to "ログアウト", destroy_administrator_session_path, method: :delete, class: "fas fa-user-plus nav-link text-light" %>
+              </li>
+              <li class="nav-item text-light">
+                <%= link_to "問い合わせ", class: "fas fa-home nav-link text-light" %>
+              </li>
+              <li class="nav-item text-light">
+                <%= link_to "飼い主", admin_dog_owners_path, class: "fas fa-users nav-link text-light" %>
+              </li>
+              <li class="nav-item text-light">
+                <%= link_to "カテゴリー", admin_dog_categories_path, class: "fas fa-book-open nav-link text-light" %>
+              </li>
             <% else %>
               <li class="nav-item text-light">
                 <!--リロードしてからログインボタン押さないとログインできないという不具合が発生したので、その解決として「'data-turbolinks': false」を追記-->
