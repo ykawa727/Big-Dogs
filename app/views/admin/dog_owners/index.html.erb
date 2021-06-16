@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10">
+      <h4>飼い主一覧</h4>
+      <table class='table'>
+        <thead class="table-light">
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dog_owners.each do |dog_owner| %>
+            <tr>
+              <td><%= dog_owner.id %></td>
+              <td><%= link_to dog_owner.last_name + dog_owner.first_name, admin_dog_owner_path(dog_owner) %></td>
+              <td><%= dog_owner.email %></td>
+              <td>
+                <% if dog_owner.is_deleted == true %>
+                  <div style="color:#696969">退会</div>
+                <% else %>
+                  <div style="color:#c71585">有効</div>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
