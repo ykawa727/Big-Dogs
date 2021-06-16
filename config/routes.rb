@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :dog_owners
-      resources :dog_categories
+      resources :dog_categories, only: [:index, :create, :edit, :update, :destroy]
     end
 
       get '/about' => 'homes#about'

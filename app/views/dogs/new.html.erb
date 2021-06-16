@@ -11,9 +11,9 @@
             <tr>
               <td>
                 <div class="form-row">
-                  <%= f.label :名前, class:"col-sm-3 col-form-label-sm" %>
+                  <%= f.label :ワンちゃんの大きさ, class:"col-sm-3 col-form-label-sm" %>
                   <div class="col-sm-4">
-                    <%= f.text_field :last_name, autofocus: true, class:"form-control form-control-sm", placeholder: "ワンちゃんの名前" %>
+                    <%= f.select :size, [["中型犬", "中型犬"], ["大型犬", "大型犬"]], include_blank: "選択して下さい" %>
                   </div>
                 </div>
               </td>
@@ -24,7 +24,7 @@
                 <div class="form-row">
                   <%= f.label :犬種, class:"col-sm-3 col-form-label-sm" %>
                   <div class="col-sm-4">
-                    <%= f.text_field :last_name, autofocus: true, class:"form-control form-control-sm", placeholder: "犬種" %>
+                    <%= f.collection_select :category, dog_category.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
                   </div>
                 </div>
               </td>
