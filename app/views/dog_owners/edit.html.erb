@@ -38,11 +38,11 @@
             </div>
             <div class="form-group">
               <%= f.label :"プロフィール画像", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.attachment_field :image, autofocus: true, id:"image", placeholder:"プロフィール画像", class: "form-control-file user_profile_image" %>
+              <%= f.attachment_field :image, autofocus: true, id:"image", placeholder:"プロフィール画像", class: "form-control-file" %>
             </div>
           </tbody>
           <%= f.submit "編集内容を保存", class: "btn btn-outline-secondary" %>
-          <%= link_to "退会する", dog_owners_withdrawal_path, class: "btn btn-outline-secondary" %>
+          <%= link_to "退会する", withdrawal_dog_owner_path, class: "btn btn-outline-secondary" %>
         </table>
       <% end %>
     </div>

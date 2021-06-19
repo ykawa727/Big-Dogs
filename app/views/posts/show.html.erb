@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row mt-3 mx-auto">
+  <h4>相談したい飼い主</h4>
+    <table class="table table-borderless">
+      <tr>
+        <td>
+          <%= attachment_image_tag @post.dog_owner, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= @post.dog_owner.last_name + " " + @post.dog_owner.first_name %>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row mt-1 mx-auto">
+  <h4>お悩みのワンちゃん</h4>
+    <table class="table table-borderless">
+      <tr>
+        <td>
+          <%= attachment_image_tag @post.dog, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= @post.dog.name %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row mt-3 mx-auto">
+    <div class="col-sm-10">
+      <div class="d-flex">
+        <h3>お悩み詳細</h3>
+        <% if @post.dog_owner.id == current_dog_owner.id %>
+        <div class="offset-1">
+          <%= link_to "削除する", post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-secondary" %>
+        </div>
+        <% end %>
+      </div>
+      
+      <div class="border border-warning mt-1">
+        <div class="col">
+          <h6>お悩みカテゴリー</h6>
+          <p><%= @post.category %></p>
+        </div>
+  
+        <div class="col">
+          <h6>キーワード</h6>
+          <p><%= @post.keyword %></p>
+        </div>
+      </div>
+      
+      <div class="border border-warning mt-1">
+        <div class="col">
+          <h6>タイトル</h6>
+          <p><%= @post.title %></p>
+        </div>
+  
+        <div class="col">
+          <h6>お悩み本文</h6>
+          <p><%= @post.body %></p>
+        </div>
+        
+        <div class="col">
+          <p><%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

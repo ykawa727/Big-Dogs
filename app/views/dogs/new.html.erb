@@ -8,27 +8,89 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <div class="form-row">
-                  <%= f.label :名前, class:"col-sm-3 col-form-label-sm" %>
-                  <div class="col-sm-4">
-                    <%= f.text_field :last_name, autofocus: true, class:"form-control form-control-sm", placeholder: "ワンちゃんの名前" %>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            
+            <!--犬種カラムと連動させるつもりで作成したが、PF制作が間に合わなくなるので作成中止-->
+            <!--<tr>-->
+              <!--<td>-->
+                <!--<div class="form-row">-->
+                  <%#= f.label :ワンちゃんの大きさ, class:"col-sm-3 col-form-label-sm" %>
+                    <!--<div class="col-sm-4">-->
+                      <!--<%#= f.select :size, [["中型犬", "中型犬"], ["大型犬", "大型犬"]], include_blank: "選択して下さい" %>-->
+                    <!--</div>-->
+                <!--</div>-->
+              <!--</td>-->
+            <!--</tr>-->
+
             <tr>
               <td>
                 <div class="form-row">
                   <%= f.label :犬種, class:"col-sm-3 col-form-label-sm" %>
                   <div class="col-sm-4">
-                    <%= f.text_field :last_name, autofocus: true, class:"form-control form-control-sm", placeholder: "犬種" %>
+                    <%= f.collection_select :dog_category_id, DogCategory.all, :id, :category, include_blank: "選択して下さい" %>
                   </div>
                 </div>
               </td>
             </tr>
+
+            <tr>
+              <td>
+                <div class="form-row">
+                  <%= f.label :名前, class:"col-sm-3 col-form-label-sm" %>
+                  <div class="col-sm-4">
+                    <%= f.text_field :name, class:"form-control form-control-sm", placeholder: "ワンちゃん名前" %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="form-row">
+                  <%= f.label :年齢, class:"col-sm-3 col-form-label-sm" %>
+                  <div class="col-sm-4">
+                    <%= f.select :age, Dog.ages.keys.map{|k| [I18n.t("enums.dog.age.#{k}"), k]}, {} %>
+                    <%#= f.select :age, [["０〜１歳（子犬）", 0], ["１〜７歳（成犬）", 1], ["７〜１０歳（シニア初期）", 2], ["１０〜１３歳（シニア中期）", 3], ["１３歳以上（シニア後期）", 4],], include_blank: "選択して下さい" %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="form-row">
+                  <%= f.label :性別, class:"col-sm-3 col-form-label-sm" %>
+                  <div class="col-sm-4">
+                    <%= f.select :gender, Dog.genders.keys.map{|k| [I18n.t("enums.dog.gender.#{k}"), k]}, {} %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class = 'form-group'>
+                  <%= f.label :"ワンちゃん紹介", class:"col-sm-4 col-form-label-sm" %>
+                  <%= f.text_area :introduction, class:"form-control form-control-sm" %>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class = 'form-group'>
+                  <%= f.label :"ワンちゃん画像", class:"col-sm-4 col-form-label-sm" %>
+                  <%= f.attachment_field :image, id:"image", placeholder:"プロフィール画像", class: "form-control-file user_profile_image" %>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="actions">
+                  <%= f.submit "新規登録", class: "btn btn-secondary" %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
 
         </table>
       <% end %>
