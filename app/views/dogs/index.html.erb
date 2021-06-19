@@ -1,0 +1,33 @@
+<div class = "container">
+    <div class = "row">
+      <h4>ワンちゃん一覧</h4>
+    </div>
+
+    <div class = "row">
+      <div class="col-sm-10">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ワンちゃん写真</th>
+              <th>名前</th>
+              <th>犬種</th>
+              <th>年齢</th>
+              <th>性別</th>
+            </tr>
+          </thead>
+
+          <% @dogs.each do |dog| %>
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag dog, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg" %></td>
+              <td><%= link_to dog.name, dog_path(dog.id) %></td>
+              <td><%= dog.dog_category.category %></td>
+              <td><%= dog.age %></td>
+              <td><%= dog.gender %></td>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>

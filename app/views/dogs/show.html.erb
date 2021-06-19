@@ -1,0 +1,44 @@
+<div class = "container">
+  <div class="row mt-3">
+    <div class="col-sm-10">
+    <table class="table table-borderless">
+      <tr>
+        <th>ワンちゃん画像</th>
+        <td><%= attachment_image_tag @dog, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+      </tr>
+      <tr>
+        <th>名前</th>
+        <td><%= @dog.name %></td>
+      </tr>
+      <tr>
+        <th>ワンちゃん紹介</th>
+        <td><%= @dog.introduction %></td>
+      </tr>
+      <tr>
+        <th>犬種</th>
+        <td><%= @dog.dog_category.category %></td>
+      </tr>
+      <tr>
+        <th>年齢</th>
+        <td><%= @dog.age %></td>
+      </tr>
+      <tr>
+        <th>性別</th>
+        <td><%= @dog.gender %></td>
+      </tr>
+
+      <% if @dog.dog_owner.id == current_dog_owner.id %>
+      <tr>
+        <td><%= link_to "編集する", edit_dog_path(@dog.id), class: "btn btn-secondary" %></td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-4">
+      <%= link_to "飼い主さん情報へ", dog_owner_path(@dog.dog_owner.id) %>
+    </div>
+  </div>
+</div>
