@@ -1,11 +1,8 @@
 class ReferencesController < ApplicationController
   def create
     answer = Answer.find(params[:answer_id])
-
-    #byebug
     reference = current_dog_owner.references.new(answer_id: answer.id)
     reference.save
-    
     redirect_to post_path(answer.post)
   end
 
