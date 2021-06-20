@@ -27,5 +27,10 @@ Rails.application.routes.draw do
       get '/dog_owners/withdrawal' => 'dog_owners#withdrawal', as: 'withdrawal_dog_owner'
       resources :dog_owners, only: [:show, :edit, :update, :destroy]
       resources :dogs
-      resources :posts
+      resources :posts, only: [:new, :create, :index, :show, :destroy] do
+        resource :cognitions, only: [:create, :destroy]
+        resources :answers, only: [:create, :destroy] do
+          resource :references, only: [:create, :destroy]
+        end
+      end
 end
