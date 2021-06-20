@@ -1,6 +1,12 @@
 class Post < ApplicationRecord
   belongs_to :dog_owner
   belongs_to :dog
+  has_many :answers, dependent: :destroy
+  has_many :cognitions, dependent: :destroy
+  
+   def cognitioned_by?(dog_owner)
+    cognitions.where(dog_owner_id: dog_owner.id).exists?
+  end
   
   attachment :image
   

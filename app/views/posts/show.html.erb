@@ -36,34 +36,93 @@
         </div>
         <% end %>
       </div>
-      
+
       <div class="border border-warning mt-1">
         <div class="col">
           <h6>お悩みカテゴリー</h6>
           <p><%= @post.category %></p>
         </div>
-  
+
         <div class="col">
           <h6>キーワード</h6>
           <p><%= @post.keyword %></p>
         </div>
       </div>
-      
+
       <div class="border border-warning mt-1">
         <div class="col">
           <h6>タイトル</h6>
           <p><%= @post.title %></p>
         </div>
-  
+
         <div class="col">
           <h6>お悩み本文</h6>
           <p><%= @post.body %></p>
         </div>
-        
+
         <div class="col">
           <p><%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg' %></p>
         </div>
+
+        <% if @post.cognitioned_by?(current_dog_owner) %>
+          <p>
+          <%= link_to post_cognitions_path(@post), method: :delete do %>
+            ♥<%= @post.cognitions.count %> 知りたい！
+          <% end %>
+          </p>
+        <% else %>
+          <p>
+          <%= link_to post_cognitions_path(@post), method: :post do %>
+            ♡<%= @post.cognitions.count %> 知りたい！
+          <% end %>
+          </p>
+        <% end %>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-3 mx-auto">
+    <div class="col-sm-10">
+    <%= form_with(model:[@post, @answer], local: true) do |f| %>
+      <%= f.text_area :body, rows:'5',placeholder: "回答をここに記載", class: "col-sm-8" %>
+      <%= f.submit "回答する" %>
+    <% end %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm-10">
+      <p>回答数：<%= @post.answers.count %></p>
+      
+      <% @post.answers.each do |answer| %>
+      <div class="col">
+        <%= answer.dog_owner.last_name + " " + answer.dog_owner.first_name %>
+        <%= answer.created_at.strftime('%Y/%m/%d') %>
+
+        <% if answer.dog_owner == current_dog_owner %>
+        <%= link_to "削除する", post_answer_path(answer.post, answer), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-secondary" %>
+        <% end %>
+
+      </div>
+      <div class="col-sm-6 border">
+        <%= answer.body %>
+        <% if answer.referenced_by?(current_dog_owner) %>
+          <p class="text-right">
+          <%= link_to post_answer_references_path(@post, answer), method: :delete do %>
+            ♥<%= answer.references.count %> 参考になった！
+          <% end %>
+          </p>
+        <% else %>
+          <p class="text-right">
+          <%= link_to post_answer_references_path(@post, answer), method: :post do %>
+            ♡<%= answer.references.count %> 参考になった！
+          <% end %>
+          </p>
+        <% end %>
+      </div>
+      <% end %>
+      
     </div>
   </div>
 </div>
