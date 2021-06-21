@@ -1,4 +1,6 @@
 class CognitionsController < ApplicationController
+  before_action :authenticate_dog_owner!
+  
   def create
     post = Post.find(params[:post_id])
     cognition = current_dog_owner.cognitions.new(post_id: post.id)

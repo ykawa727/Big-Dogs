@@ -1,4 +1,6 @@
 class Admin::DogOwnersController < ApplicationController
+  before_action :authenticate_administrator!
+  
   def index
     @dog_owners = DogOwner.all
   end

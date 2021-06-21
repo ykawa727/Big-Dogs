@@ -27,6 +27,16 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    #@categories = Post.search(params[:category])
+    #@posts = Post.search(params[:word])
+    #@word = params[:word]
+    # dogmodel joins where every ? any items search
+    @posts = Post.search(params[:category], params[:word])
+    Dog.joins(:posts)
+    render "index"
+  end
+
   private
   def post_params
     params.require(:post).permit(:dog_id, :category, :title, :body, :keyword, :image)

@@ -33,4 +33,5 @@ Rails.application.routes.draw do
           resource :references, only: [:create, :destroy]
         end
       end
+      get 'search' => 'posts#search'
 end

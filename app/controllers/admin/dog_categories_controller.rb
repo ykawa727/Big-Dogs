@@ -1,4 +1,6 @@
 class Admin::DogCategoriesController < ApplicationController
+  before_action :authenticate_administrator!
+  
   def index
     @dog_category = DogCategory.new
     @dog_categories = DogCategory.all

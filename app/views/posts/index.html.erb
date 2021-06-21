@@ -8,7 +8,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-12">
       <h4>お悩み一覧</h4>
       <table class="table">
           <% @posts.each do |post| %>
@@ -16,6 +16,11 @@
             <td>
               <div><%= attachment_image_tag post.dog, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %></div>
               <div><%= post.dog.name %></div>
+            </td>
+            <td>
+              <div><%= post.dog.dog_category.category %></div>
+              <div><%= post.dog.age %></div>
+              <div><%= post.dog.gender %></div>
             </td>
             <td>
               <div><%= link_to post.title, post_path(post.id) %></div>
