@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_dog_owner!,except: [:index]
+
   def index
     @posts = Post.all
   end
@@ -23,6 +25,16 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path
+  end
+
+  def search
+    #@categories = Post.search(params[:category])
+    #@posts = Post.search(params[:word])
+    #@word = params[:word]
+    # dogmodel joins where every ? any items search
+    @posts = Post.search(params[:category], params[:word])
+    Dog.joins(:posts)
+    render "index"
   end
 
   private

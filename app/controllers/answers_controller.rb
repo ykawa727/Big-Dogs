@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_dog_owner!
+  
   def create
     post = Post.find(params[:post_id])
     answer = Answer.new(answer_params)

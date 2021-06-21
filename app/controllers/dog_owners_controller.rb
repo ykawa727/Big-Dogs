@@ -1,5 +1,5 @@
 class DogOwnersController < ApplicationController
-  #before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_dog_owner!
   
   def show
     @dog_owner = DogOwner.find(params[:id])
@@ -28,7 +28,7 @@ class DogOwnersController < ApplicationController
    private
 
   def dog_owner_params
-    params.require(:dog_owner).permit(:name, :nickname, :email, :postal_code, :address, :phone_number, :introduction, :image)
+    params.require(:dog_owner).permit(:last_name, :first_name, :nickname, :email, :postal_code, :address, :phone_number, :introduction, :image)
   end
 
 end
