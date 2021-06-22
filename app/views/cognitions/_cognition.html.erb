@@ -1,0 +1,13 @@
+<% if post.cognitioned_by?(current_dog_owner) %>
+  <p>
+  <%= link_to post_cognitions_path(post), method: :delete, remote: true do %>
+    ♥<%= post.cognitions.count %> 知りたい！
+  <% end %>
+  </p>
+<% else %>
+  <p>
+  <%= link_to post_cognitions_path(post), method: :post, remote: true do %>
+    ♡<%= post.cognitions.count %> 知りたい！
+  <% end %>
+  </p>
+<% end %>
