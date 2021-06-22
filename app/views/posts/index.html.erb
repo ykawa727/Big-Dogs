@@ -10,6 +10,9 @@
   <div class="row">
     <div class="col-sm-12">
       <h4>お悩み一覧</h4>
+      <% if @posts.count == 0 %>
+        <p>お悩みは存在しません</p>
+      <% else %>
       <table class="table">
           <% @posts.each do |post| %>
           <tr>
@@ -30,6 +33,7 @@
           </tr>
           <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>

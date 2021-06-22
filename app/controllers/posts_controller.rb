@@ -33,7 +33,11 @@ class PostsController < ApplicationController
     #@word = params[:word]
     # dogmodel joins where every ? any items search
     @posts = Post.search(params[:category], params[:word])
-    Dog.joins(:posts)
+    render "index"
+  end
+
+  def dog_search
+    @posts = Post.dog_search(params[:dog_category], params[:age], params[:gender])
     render "index"
   end
 

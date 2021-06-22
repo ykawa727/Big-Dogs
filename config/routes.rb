@@ -34,4 +34,5 @@ Rails.application.routes.draw do
         end
       end
       get 'search' => 'posts#search'
+      get 'dog_search' => 'posts#dog_search'
 end

@@ -18,15 +18,23 @@
     </div>
   </div>
 
-  <div class="row mt-3">-->
-    <div class="col-sm-6">-->
+  <div class="row mt-3">
+    <div class="col-sm-6">
     <h5>悩みのあるワンちゃんを検索！</h5>
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.select :category, options_for_select(DogCategory.all.map{|d| [d.category, d.id]}), include_blank: "カテゴリーを選ぶ" %>
+    <%= form_with url: dog_search_path, method: :get, local: true do |f| %>
+      <%= f.select :dog_category, options_for_select(DogCategory.all.map{|d| [d.category, d.id]}), include_blank: "カテゴリーを選ぶ" %>
       <%= f.select :age, options_for_select(Dog.ages), include_blank: "年齢を選ぶ" %>
      <%= f.select :gender, options_for_select(Dog.genders), include_blank: "性別を選ぶ" %>
     <%= f.submit "検索する" %>
     <% end %>
    </div>
+  </div>
+
+  <!--ランキング機能-->
+  <div class="row mt-3">
+   <% @all_ranks.each do |cognitions_post| %>
+    <%= cognitions_post.title %>
+    <%= cognitions_post.body %>
+   <% end %>
   </div>
 </div>
