@@ -55,7 +55,7 @@
     <div class="col-sm-2">ワンちゃん情報</div>
     <% if @dog_owner.id == current_dog_owner.id %>
     <div class="col-sm-2">
-      <%= link_to "追加する", new_dog_path(current_dog_owner.dogs), class: "btn btn-secondary" %>
+      <%= link_to "追加する", new_dog_path, class: "btn btn-secondary" %>
     </div>
     <% end %>
   </div>

@@ -14,24 +14,30 @@
         <p>お悩みは存在しません</p>
       <% else %>
       <table class="table">
-          <% @posts.each do |post| %>
-          <tr>
-            <td>
-              <div><%= attachment_image_tag post.dog, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %></div>
-              <div><%= post.dog.name %></div>
-            </td>
-            <td>
-              <div><%= post.dog.dog_category.category %></div>
-              <div><%= post.dog.age %></div>
-              <div><%= post.dog.gender %></div>
-            </td>
-            <td>
-              <div><%= link_to post.title, post_path(post.id) %></div>
-              <div class="border-top"><%= post.body.truncate(60) %></div>
-              <p class="text-right"><%= link_to "#{post.answers.count} 個の回答", post_path(post.id) %></p>
-            </td>
-          </tr>
-          <% end %>
+        <% @posts.each do |post| %>
+            <tr>
+              <td>
+              <%= link_to post_path(post.id), class: "posts-link" do %>
+                <div><%= attachment_image_tag post.dog, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %></div>
+                <div><%= post.dog.name %></div>
+              <% end %>
+              </td>
+              <td>
+              <%= link_to post_path(post.id), class: "posts-link" do %>
+                <div><%= post.dog.dog_category.category %></div>
+                <div><%= post.dog.age %></div>
+                <div><%= post.dog.gender %></div>
+              <% end %>
+              </td>
+              <td>
+              <%= link_to post_path(post.id), class: "posts-link" do %>
+                <div><%= post.title %></div>
+                <div class="border-top"><%= post.body.truncate(60) %></div>
+                <p class="text-right"><%= "#{post.answers.count} 個の回答" %></p>
+              <% end %>
+              </td>
+            </tr>
+        <% end %>
       </table>
       <% end %>
     </div>
