@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   before_action :authenticate_dog_owner!
-  
+
   def new
     @dog = Dog.new
   end
@@ -9,10 +9,8 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_params)
     @dog.dog_owner_id = current_dog_owner.id
     if @dog.save(dog_params)
-      flash[:notice] = "保存ができました！"
       redirect_to dog_owner_path(current_dog_owner.id)
     else
-      flash.now[:alert] = "保存ができませんでした・・・"
       render :new
     end
   end

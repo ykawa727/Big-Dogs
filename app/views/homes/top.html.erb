@@ -30,11 +30,61 @@
    </div>
   </div>
 
-  <!--ランキング機能-->
-  <div class="row mt-3">
-   <% @all_ranks.each do |cognitions_post| %>
-    <%= cognitions_post.title %>
-    <%= cognitions_post.body %>
-   <% end %>
+  <div class="row mt-5">
+    <table class="table col-10">
+    <h5>「知りたい！」が多く付いてるお悩み</h5>
+    <% @cognition_ranks.each do |cognitions_post| %>
+      <tr>
+        <td>
+          <div><%= attachment_image_tag cognitions_post.dog, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %></div>
+          <div><%= cognitions_post.dog.name %></div>
+        </td>
+        <td>
+          <div><%= cognitions_post.dog.dog_category.category %></div>
+          <div><%= cognitions_post.dog.age %></div>
+          <div><%= cognitions_post.dog.gender %></div>
+        </td>
+        <td>
+          <% if dog_owner_signed_in? %>
+          <div><%= link_to cognitions_post.title, post_path(cognitions_post.id) %></div>
+          <% else %>
+          <div><%= link_to cognitions_post.title, new_dog_owner_session_path %></div>
+          <% end %>
+
+          <div><%= cognitions_post.body %></div>
+          <p class="text-right"><%= "#{cognitions_post.answers.count} 個の回答" %></p>
+        </td>
+      </tr>
+     <% end %>
+    </table>
+  </div>
+
+  <div class="row mt-5">
+    <table class="table col-10">
+    <h5>回答が多く付いてるお悩み</h5>
+    <% @answer_ranks.each do |answers_post| %>
+      <tr>
+        <td>
+          <div><%= attachment_image_tag answers_post.dog, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %></div>
+          <div><%= answers_post.dog.name %></div>
+        </td>
+        <td>
+          <div><%= answers_post.dog.dog_category.category %></div>
+          <div><%= answers_post.dog.age %></div>
+          <div><%= answers_post.dog.gender %></div>
+        </td>
+        <td>
+          <% if dog_owner_signed_in? %>
+          <div><%= link_to answers_post.title, post_path(answers_post.id) %></div>
+          <% else %>
+          <div><%= link_to answers_post.title, new_dog_owner_session_path %></div>
+          <% end %>
+
+          <div><%= answers_post.body %></div>
+          <p class="text-right"><%= "#{answers_post.answers.count} 個の回答" %></p>
+        </td>
+      </tr>
+     <% end %>
+    </table>
   </div>
 </div>

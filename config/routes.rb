@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #ここまでコメントアウト
 
     namespace :admin do
-      resources :dog_owners
+      resources :dog_owners, only: [:index, :show, :edit, :update]
       resources :dog_categories, only: [:index, :create, :edit, :update, :destroy]
     end
 

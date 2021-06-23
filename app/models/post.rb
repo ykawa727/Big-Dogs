@@ -22,42 +22,27 @@ class Post < ApplicationRecord
     end
   end
 
+  #top画面のワンちゃんから検索機能のメソッドを定義
   def self.dog_search(dog_category_id, age, gender)
-    # 検索の選択肢が一つも選ばれない場合は空をreturnする
     if dog_category_id.empty? && age.empty? && gender.empty?
-      # []空の配列(複数個前提のデエタ)
       return []
     end
-    # return用変数resultにdogをjoinしたpostを設定
+    
     result = self.joins(:dog)
-    # dog_category_idが存在する場合はdog_category_idで検索する
     if dog_category_id.present?
       result = result.where(dogs:{dog_category_id: dog_category_id})
     end
-    # ageが存在する場合はageで検索する
+    
     if age.present?
-      # dog_category_idの有無に関わらずresultをageで検索する
       result = result.where(dogs:{age: age})
     end
-    # genderが存在する場合はgenderで検索する
+    
     if gender.present?
-      # dog_category_id,ageの有無に関わらずresultをgenderで検索する
       result = result.where(dogs:{gender: gender})
     end
-    # 検索されたresultをreturnする
     return result
-
   end
-
-
-  def hello
-    puts "hello"
-  end
-
-  def self.hello
-    puts "hello"
-  end
-
+  
   attachment :image
 
 end

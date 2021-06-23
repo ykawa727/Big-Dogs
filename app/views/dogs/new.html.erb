@@ -5,6 +5,12 @@
         <table class="table table-borderless">
           <thead>
             <h4>愛犬情報登録・追加</h4>
+            <% if @dog.errors.any? %>
+              <%= @dog.errors.count %>件のエラーが発生しました
+              <% @dog.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            <% end %>
           </thead>
 
           <tbody>
@@ -47,7 +53,7 @@
                 <div class="form-row">
                   <%= f.label :年齢, class:"col-sm-3 col-form-label-sm" %>
                   <div class="col-sm-4">
-                    <%= f.select :age, Dog.ages.keys.map{|k| [I18n.t("enums.dog.age.#{k}"), k]}, {} %>
+                    <%= f.select :age, Dog.ages.keys.map{|k| [I18n.t("enums.dog.age.#{k}"), k]}, {include_blank: "選択して下さい"} %>
                     <%#= f.select :age, [["０〜１歳（子犬）", 0], ["１〜７歳（成犬）", 1], ["７〜１０歳（シニア初期）", 2], ["１０〜１３歳（シニア中期）", 3], ["１３歳以上（シニア後期）", 4],], include_blank: "選択して下さい" %>
                   </div>
                 </div>
@@ -59,7 +65,7 @@
                 <div class="form-row">
                   <%= f.label :性別, class:"col-sm-3 col-form-label-sm" %>
                   <div class="col-sm-4">
-                    <%= f.select :gender, Dog.genders.keys.map{|k| [I18n.t("enums.dog.gender.#{k}"), k]}, {} %>
+                    <%= f.select :gender, Dog.genders.keys.map{|k| [I18n.t("enums.dog.gender.#{k}"), k]}, {include_blank: "選択して下さい"} %>
                   </div>
                 </div>
               </td>
