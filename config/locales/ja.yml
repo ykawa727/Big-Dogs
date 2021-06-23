@@ -1,0 +1,50 @@
+ja:
+  enums:
+    dog:
+      age:
+        "０〜１歳（子犬）": "０〜１歳（子犬）"
+        "１〜７歳（成犬）": "１〜７歳（成犬）"
+        "７〜１０歳（シニア初期）": "７〜１０歳（シニア初期）"
+        "１０〜１３歳（シニア中期）": "１０〜１３歳（シニア中期）"
+        "１３歳以上（シニア後期）": "１３歳以上（シニア後期）"
+      gender:
+        "男の子" : "男の子"
+        "女の子" : "女の子"
+        "秘密" : "秘密"
+    post:
+      category:
+        "病気・ケガ" : "病気・ケガ"
+        "ご飯" : "ご飯"
+        "飼い方・しつけ" : "飼い方・しつけ"
+        "お出かけ・遊び" : "お出かけ・遊び"
+        "介護" : "介護"
+        "その他" : "その他"
+  activerecord:
+    models:
+      dog_owner: 飼い主
+      dog: ワンちゃん
+      post: お悩み
+    attributes:
+      dog_owner:
+        email: メールアドレス
+        encrypted_password: パスワード
+        last_name: 姓
+        first_name: 名
+        nickname: ニックネーム
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        introduction: 自己紹介文
+      dog:
+        dog_category: 犬種
+        dog_category_id: 犬種
+        name: ワンちゃんの名前
+        age: 年齢
+        gender: 性別
+        introduction: ワンちゃん紹介文
+      post:
+        dog: ワンちゃん
+        dog_id: ワンちゃん
+        category: カテゴリー
+        title: タイトル
+        body: 本文
