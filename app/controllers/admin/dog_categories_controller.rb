@@ -3,7 +3,7 @@ class Admin::DogCategoriesController < ApplicationController
   
   def index
     @dog_category = DogCategory.new
-    @dog_categories = DogCategory.all
+    @dog_categories = DogCategory.page(params[:page])
   end
 
   def create

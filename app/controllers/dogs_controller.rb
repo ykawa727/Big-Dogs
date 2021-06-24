@@ -16,7 +16,7 @@ class DogsController < ApplicationController
   end
 
   def index
-    @dogs = Dog.all
+    @dogs = Dog.page(params[:page]).reverse_order
   end
 
   def show

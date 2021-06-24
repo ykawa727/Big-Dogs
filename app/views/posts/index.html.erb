@@ -16,7 +16,7 @@
       <table class="table">
         <% @posts.each do |post| %>
           <tr>
-
+            
           <% if dog_owner_signed_in? %>
             <td>
               <%= link_to post_path(post.id), class: "posts-link" do %>
@@ -61,11 +61,12 @@
             <% end %>
             </td>
           <% end %>
-
+          
           </tr>
         <% end %>
       </table>
       <% end %>
+    <%= paginate @posts %>
     </div>
   </div>
 </div>

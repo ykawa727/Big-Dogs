@@ -21,7 +21,7 @@ class DogOwnersController < ApplicationController
     @dog_owner = current_dog_owner
     @dog_owner.update(is_deleted: true)
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    flash[:notice] = "退会手続きを完了しました。"
     redirect_to root_path
   end
 
