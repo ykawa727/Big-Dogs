@@ -1,8 +1,8 @@
 class Admin::DogOwnersController < ApplicationController
   before_action :authenticate_administrator!
-  
+
   def index
-    @dog_owners = DogOwner.all
+    @dog_owners = DogOwner.page(params[:page])
   end
 
   def show

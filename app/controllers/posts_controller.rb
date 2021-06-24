@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_dog_owner!,except: [:index]
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).reverse_order
   end
 
   def new
