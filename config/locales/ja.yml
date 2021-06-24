@@ -24,6 +24,7 @@ ja:
       dog_owner: 飼い主
       dog: ワンちゃん
       post: お悩み
+      answer: 回答
     attributes:
       dog_owner:
         email: メールアドレス
@@ -48,3 +49,5 @@ ja:
         category: カテゴリー
         title: タイトル
         body: 本文
+      answer:
+        body: 回答文
