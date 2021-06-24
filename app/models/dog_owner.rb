@@ -23,4 +23,8 @@ class DogOwner < ApplicationRecord
   validates :phone_number, presence: true
   validates :introduction, length: { maximum: 500 }
 
+  def active_for_authentication?
+    super && !is_deleted
+  end
+
 end
