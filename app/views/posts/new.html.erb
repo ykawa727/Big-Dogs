@@ -3,6 +3,12 @@
     <h4 class="col-sm-4">
       お悩み投稿
     </h4>
+    <% if @post.errors.any? %>
+      <%= @post.errors.count %>件のエラーが発生しました
+      <% @post.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="row mt-3">

@@ -4,6 +4,12 @@ class Post < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :cognitions, dependent: :destroy
 
+  validates :dog_id, presence: true
+  validates :category, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :body, length: { maximum: 500}
+
   #「知りたい」を押した飼い主（ユーザー）の存在を確認するメソッドを定義
   def cognitioned_by?(dog_owner)
    cognitions.where(dog_owner_id: dog_owner.id).exists?
@@ -27,22 +33,22 @@ class Post < ApplicationRecord
     if dog_category_id.empty? && age.empty? && gender.empty?
       return []
     end
-    
+
     result = self.joins(:dog)
     if dog_category_id.present?
       result = result.where(dogs:{dog_category_id: dog_category_id})
     end
-    
+
     if age.present?
       result = result.where(dogs:{age: age})
     end
-    
+
     if gender.present?
       result = result.where(dogs:{gender: gender})
     end
     return result
   end
-  
+
   attachment :image
 
 end

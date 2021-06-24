@@ -50,8 +50,7 @@
           <% else %>
           <div><%= link_to cognitions_post.title, new_dog_owner_session_path %></div>
           <% end %>
-
-          <div><%= cognitions_post.body %></div>
+          <div><%= cognitions_post.body.truncate(40) %></div>
           <p class="text-right"><%= "#{cognitions_post.answers.count} 個の回答" %></p>
         </td>
       </tr>
@@ -79,8 +78,7 @@
           <% else %>
           <div><%= link_to answers_post.title, new_dog_owner_session_path %></div>
           <% end %>
-
-          <div><%= answers_post.body %></div>
+          <div><%= answers_post.body.truncate(40) %></div>
           <p class="text-right"><%= "#{answers_post.answers.count} 個の回答" %></p>
         </td>
       </tr>

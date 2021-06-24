@@ -1,13 +1,16 @@
 class AnswersController < ApplicationController
   before_action :authenticate_dog_owner!
-  
+
   def create
-    post = Post.find(params[:post_id])
-    answer = Answer.new(answer_params)
-    answer.dog_owner_id = current_dog_owner.id
-    answer.post_id = post.id
-    answer.save
-    redirect_to post_path(post)
+    @post = Post.find(params[:post_id])
+    @answer = Answer.new(answer_params)
+    @answer.dog_owner_id = current_dog_owner.id
+    @answer.post_id = @post.id
+    if @answer.save
+      redirect_to post_path(@post)
+    else
+      render template: 'posts/show'
+    end
   end
 
   def destroy

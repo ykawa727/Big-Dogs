@@ -12,8 +12,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.dog_owner_id = current_dog_owner.id
-    @post.save
-    redirect_to post_path(@post.id)
+    if @post.save
+      redirect_to post_path(@post.id)
+    else
+      render :new
+    end
   end
 
   def show

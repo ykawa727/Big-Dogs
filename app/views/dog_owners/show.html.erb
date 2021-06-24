@@ -19,14 +19,14 @@
         <td><%= attachment_image_tag @dog_owner, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
       </tr>
       <tr>
-        <th>氏名</th>
-        <td><%= @dog_owner.last_name + " " + @dog_owner.first_name %></td>
-      </tr>
-      <tr>
         <th>ニックネーム</th>
         <td><%= @dog_owner.nickname %></td>
       </tr>
       <% if @dog_owner.id == current_dog_owner.id %>
+      <tr>
+        <th>氏名</th>
+        <td><%= @dog_owner.last_name + " " + @dog_owner.first_name %></td>
+      </tr>
       <tr>
         <th>メールアドレス</th>
         <td><%= @dog_owner.email %></td>
@@ -63,13 +63,13 @@
  <div class="row mt-3">
     <div class="col-sm-10">
     <% @dogs.each do |dog| %>
-    
+
     <% if @dog_owner.id == current_dog_owner.id %>
     <div class="col-sm-2">
       <%= link_to "編集する", edit_dog_path(dog.id), class: "btn btn-secondary" %>
     </div>
     <% end %>
-    
+
     <table class="table table-bordered">
       <tr>
         <th>ワンちゃん画像</th>
