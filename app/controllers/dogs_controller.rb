@@ -16,7 +16,8 @@ class DogsController < ApplicationController
   end
 
   def index
-    @dogs = Dog.page(params[:page]).reverse_order
+    #@dogs = Dog.page(params[:page]).reverse_order
+    @dogs = Dog.joins(:dog_owner).where(dog_owners: {is_deleted: false}).page(params[:page]).reverse_order
   end
 
   def show

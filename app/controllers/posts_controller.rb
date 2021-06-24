@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_dog_owner!,except: [:index]
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
+    #@posts = Post.page(params[:page]).reverse_order
+    @posts = Post.joins(:dog_owner).where(dog_owners: {is_deleted: false}).page(params[:page]).reverse_order
   end
 
   def new
