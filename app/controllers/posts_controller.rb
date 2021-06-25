@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_dog_owner!,except: [:index]
+  before_action :authenticate_dog_owner!,except: [:index, :search, :dog_search]
 
   def index
     #@posts = Post.page(params[:page]).reverse_order
@@ -32,10 +32,6 @@ class PostsController < ApplicationController
   end
 
   def search
-    #@categories = Post.search(params[:category])
-    #@posts = Post.search(params[:word])
-    #@word = params[:word]
-    # dogmodel joins where every ? any items search
     @posts = Post.search(params[:category], params[:word])
     render "index"
   end

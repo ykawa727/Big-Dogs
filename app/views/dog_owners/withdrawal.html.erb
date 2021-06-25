@@ -1,19 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-10 mt-2">
+      <h5>本当に退会しますか？</h5>
       <div>
-        <h5>本当に退会しますか？</h5>
-        <div>
-          <p>
-            退会すると、会員登録情報や<br>
-            これまでの情報が消えてしまいます。<br>
-            退会する場合は、『退会する』をクリックしてください。
-          </p>
-        </div>
-        <div>
-          <%= link_to "退会しない", dog_owner_path(current_dog_owner), class:"btn btn-secondary" %>
-          <%= link_to "退会する", dog_owner_path(current_dog_owner), method: :delete, class:"btn btn-outline-secondary" %>
-        </div>
+        <p>
+          退会すると、これまでのあなたの投稿や<br>
+          ワンちゃんの情報が見れなくなります。<br>
+          退会する場合は、『退会する』をクリックしてください。
+        </p>
+      </div>
+      <div>
+        <%= link_to "退会しない", dog_owner_path(current_dog_owner), class:"btn btn-secondary" %>
+        <%= link_to "退会する", dog_owner_path(current_dog_owner), method: :delete, class:"btn btn-danger" %>
       </div>
     </div>
   </div>

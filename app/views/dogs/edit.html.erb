@@ -1,40 +1,35 @@
 <div class="container justify-content-center">
   <div class="row">
     <div class='col-sm-10'>
+    <h5 class="mt-3">ワンちゃん情報編集</h5>
       <%= form_with model:@dog, url:dog_path, method: :patch, local:true do |f|%>
-        <table class="table table-borderless">
-          <thead>
-            <h4>ワンちゃん情報編集</h4>
-          </thead>
-          <tbody>
-            <div class = 'form-group'>
-              <%= f.label :"名前", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.text_field :name, autofocus: true, class:"form-control form-control-sm", placeholder: @dog.name %>
-            </div>
-            <div class = 'form-group'>
-              <%= f.label :"犬種", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.collection_select :dog_category_id, DogCategory.all, :id, :category, placeholder: @dog.dog_category.category %>
-            </div>
-            <div class = 'form-group'>
-              <%= f.label :"年齢", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.select :age, Dog.ages.keys.map{|k| [I18n.t("enums.dog.age.#{k}"), k]}, {}, placeholder: @dog.age %>
-            </div>
-            <div class = 'form-group'>
-              <%= f.label :"性別", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.select :gender, Dog.genders.keys.map{|k| [I18n.t("enums.dog.gender.#{k}"), k]}, {}, placeholder: @dog.age %>
-            </div>
-            <div class = 'form-group'>
-              <%= f.label :"ワンちゃん紹介", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.text_area :introduction, class:"form-control form-control-sm", placeholder: @dog.introduction %>
-            </div>
-            <div class="form-group">
-              <%= f.label :"ワンちゃん画像", class:"col-sm-4 col-form-label-sm" %>
-              <%= f.attachment_field :image, id:"image", placeholder:"プロフィール画像", class: "form-control-file user_profile_image" %>
-            </div>
-          </tbody>
-          <%= f.submit "編集内容を保存", class: "btn btn-outline-secondary" %>
-          <%= link_to "削除する", dog_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-secondary" %>
-        </table>
+      <div class = 'form-group'>
+        <%= f.label :"名前", class:"col-sm-4 form-label" %>
+        <%= f.text_field :name, autofocus: true, placeholder: @dog.name %>
+      </div>
+      <div class = 'form-group'>
+        <%= f.label :"犬種", class:"col-sm-4 form-label" %>
+        <%= f.collection_select :dog_category_id, DogCategory.all, :id, :category, placeholder: @dog.dog_category.category %>
+      </div>
+      <div class = 'form-group'>
+        <%= f.label :"年齢", class:"col-sm-4 form-label" %>
+        <%= f.select :age, Dog.ages.keys.map{|k| [I18n.t("enums.dog.age.#{k}"), k]}, {}, placeholder: @dog.age %>
+      </div>
+      <div class = 'form-group'>
+        <%= f.label :"性別", class:"col-sm-4 form-label" %>
+        <%= f.select :gender, Dog.genders.keys.map{|k| [I18n.t("enums.dog.gender.#{k}"), k]}, {}, placeholder: @dog.age %>
+      </div>
+      <div class = 'form-group'>
+        <%= f.label :"ワンちゃん紹介", class:"col-sm-4 form-label" %>
+        <%= f.text_area :introduction, class:"form-control form-control-sm", placeholder: @dog.introduction %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"ワンちゃん画像", class:"col-sm-4 form-label" %>
+        <%= attachment_image_tag @dog, :image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= f.attachment_field :image, id:"image", class: "form-control-file" %>
+      </div>
+      <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+      <%= link_to "削除する", dog_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
       <% end %>
     </div>
   </div>
