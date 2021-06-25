@@ -1,6 +1,6 @@
 <div class = "container">
     <div class = "row">
-      <h4>ワンちゃん一覧</h4>
+      <h5 class="my-3">ワンちゃん一覧</h5>
     </div>
 
     <div class = "row">
@@ -19,7 +19,7 @@
           <% @dogs.each do |dog| %>
           <tbody>
             <tr>
-              <td><%= attachment_image_tag dog, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg" %></td>
+              <td><%= attachment_image_tag dog, :image, :fill, 100, 100, format:'jpeg', fallback:"no_image.jpg" %></td>
               <td><%= link_to dog.name, dog_path(dog.id) %></td>
               <td><%= dog.dog_category.category %></td>
               <td><%= dog.age %></td>

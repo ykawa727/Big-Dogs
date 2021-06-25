@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row mt-3">
-    <h4 class="col-sm-4">
-      お悩み投稿
-    </h4>
+    <h4>お悩み投稿</h4>
     <% if @post.errors.any? %>
       <%= @post.errors.count %>件のエラーが発生しました
       <% @post.errors.full_messages.each do |message| %>
@@ -17,50 +15,62 @@
       <table class="table table-borderless">
         <tr>
           <td>
-            <%= f.label :対象のワンちゃん, class:"col-sm-3 col-form-label-sm" %>
-            <%= f.collection_select :dog_id, Dog.where(dog_owner_id: current_dog_owner.id), :id, :name, include_blank: "選択して下さい" %>
+            <div class="form-group">
+              <%= f.label :対象のワンちゃん, class:"col-sm-3 form-label" %>
+              <%= f.collection_select :dog_id, Dog.where(dog_owner_id: current_dog_owner.id), :id, :name, include_blank: "選択して下さい" %>
+            </div>
           </td>
         </tr>
 
         <tr>
           <td>
-            <%= f.label :お悩みカテゴリー, class:"col-sm-3 col-form-label-sm" %>
-            <%= f.select :category, Post.categories.keys.map{|k| [I18n.t("enums.post.category.#{k}"), k]}, {} %>
+            <div class="form-group">
+              <%= f.label :お悩みカテゴリー, class:"col-sm-3 form-label" %>
+              <%= f.select :category, Post.categories.keys.map{|k| [I18n.t("enums.post.category.#{k}"), k]}, {} %>
+            </div>
           </td>
         </tr>
 
         <tr>
           <td>
-            <%= f.label :タイトル, class:"col-sm-3 col-form-label-sm" %>
-            <%= f.text_field :title, class:"col-sm-8 form-control" %>
+            <div class="form-group">
+              <%= f.label :タイトル, class:"col-sm-3 form-label" %>
+              <%= f.text_field :title, class:"form-control" %>
+            </div>
           </td>
         </tr>
 
         <tr>
           <td>
-            <%= f.label :お悩み本文, class:"col-sm-3 col-form-label-sm" %>
-            <%= f.text_area :body, class:"col-sm-10 form-control" %>
+            <div class="form-group">
+              <%= f.label :お悩み本文, class:"col-sm-3 form-label" %>
+              <%= f.text_area :body, class:"form-control" %>
+            </div>
           </td>
         </tr>
 
         <tr>
           <td>
-            <%= f.label :キーワード, class:"col-sm-3 col-form-label-sm" %>
-            <%= f.text_field :keyword, class:"col-sm-8 form-control" %>
-            <p>お悩みのポイントとなるキーワードを入力することで、質問を発見してもらいやすくなります。</p>
+            <div class="form-group">
+              <%= f.label :キーワード, class:"col-sm-3 form-label" %>
+              <%= f.text_field :keyword, class:"form-control" %>
+              <p>お悩みのポイントとなるキーワードを入力することで、質問を発見してもらいやすくなります。</p>
+            </div>
           </td>
         </tr>
 
         <tr>
           <td>
-            <%= f.label :お悩み関連画像, class:"col-sm-3 col-form-label-sm" %>
-            <%= f.attachment_field :image, id:"image", placeholder:"プロフィール画像", class: "form-control-file" %>
+            <div class="form-group">
+              <%= f.label :お悩み関連画像, class:"col-sm-3 form-label" %>
+              <%= f.attachment_field :image, id:"image", class: "form-control-file" %>
+            </div>
           </td>
         </tr>
 
         <tr>
           <td>
-            <%= f.submit "お悩み投稿", class: "btn btn-secondary" %>
+            <%= f.submit "お悩みを投稿する", class: "btn btn-info" %>
           </td>
         </tr>
       </table>
