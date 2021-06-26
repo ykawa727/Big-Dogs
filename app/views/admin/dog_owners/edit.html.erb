@@ -6,44 +6,44 @@
       <%= form_with model:@dog_owner, url:admin_dog_owner_path, method: :patch, local:true do |f|%>
 
       <table class="table table-borderless">
-        <tr class="form-group">
-          <th><%= f.label :会員ID %></th>
-          <td><%= f.text_field :id  , class:"form-control"%></td>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @dog_owner.id %></td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :氏名 %></th>
           <td><%= f.text_field :last_name, class:"form-control" %><br>
               <%= f.text_field :first_name, class:"form-control" %>
           </td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :ニックネーム %></th>
           <td><%= f.text_field :nickname, class:"form-control" %></td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :郵便番号 %></th>
           <td><%= f.text_field :postal_code, class:"form-control" %></td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :住所 %></th>
           <td><%= f.text_field :address, class:"form-control" %></td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :電話番号 %></th>
           <td><%= f.text_field :phone_number, class:"form-control" %></td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :メールアドレス %></th>
           <td><%= f.text_field :email , class:"form-control"%></td>
         </tr>
 
-        <tr>
+        <tr class="form-group">
           <th><%= f.label :会員ステータス %></th>
           <td><%= f.select :is_deleted, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
         </tr>

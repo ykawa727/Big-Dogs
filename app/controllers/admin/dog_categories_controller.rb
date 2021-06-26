@@ -1,17 +1,18 @@
 class Admin::DogCategoriesController < ApplicationController
   before_action :authenticate_administrator!
-  
+
   def index
     @dog_category = DogCategory.new
     @dog_categories = DogCategory.page(params[:page])
   end
 
   def create
-    dog_category = DogCategory.new(dog_category_params)
-    if dog_category.save(dog_category_params)
+    @dog_category = DogCategory.new(dog_category_params)
+    if @dog_category.save(dog_category_params)
       flash[:notice] = "保存ができました！"
       redirect_to admin_dog_categories_path
     else
+      @dog_categories = DogCategory.page(params[:page])
       flash.now[:alert] = "保存ができませんでした・・・"
       render :index
     end
@@ -22,8 +23,8 @@ class Admin::DogCategoriesController < ApplicationController
   end
 
   def update
-    dog_category = DogCategory.find(params[:id])
-    if dog_category.update(dog_category_params)
+    @dog_category = DogCategory.find(params[:id])
+    if @dog_category.update(dog_category_params)
       flash[:notice] = "犬種名を更新しました！"
       redirect_to admin_dog_categories_path
     else
