@@ -7,7 +7,7 @@
       <div class="col-sm-2">飼い主さん情報</div>
       <div class="col-sm-2">
         <% if @dog_owner.id == current_dog_owner.id %>
-          <%= link_to "編集する", edit_dog_owner_path(current_dog_owner), class: "btn btn-secondary" %>
+          <%= link_to "編集する", edit_dog_owner_path(current_dog_owner), class: "btn btn-success" %>
         <% end %>
       </div>
   </div>
@@ -55,7 +55,7 @@
     <div class="col-sm-2">ワンちゃん情報</div>
     <% if @dog_owner.id == current_dog_owner.id %>
     <div class="col-sm-2">
-      <%= link_to "追加する", new_dog_path, class: "btn btn-secondary" %>
+      <%= link_to "追加する", new_dog_path, class: "btn btn-info" %>
     </div>
     <% end %>
   </div>
@@ -66,7 +66,7 @@
 
     <% if @dog_owner.id == current_dog_owner.id %>
     <div class="col-sm-2">
-      <%= link_to "編集する", edit_dog_path(dog.id), class: "btn btn-secondary" %>
+      <%= link_to "編集する", edit_dog_path(dog.id), class: "btn btn-success" %>
     </div>
     <% end %>
 
