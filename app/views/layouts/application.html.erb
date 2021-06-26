@@ -52,7 +52,8 @@
                   <%= link_to "飼い主", admin_dog_owners_path, class: "fas fa-users nav-link text-light" %>
                 </li>
                 <li class="nav-item text-light">
-                  <%= link_to "カテゴリー", admin_dog_categories_path, class: "fas fa-paw nav-link text-light" %>
+                  <!--リロードしてからログインボタン押さないとログインできないという不具合が発生したので、その解決として「'data-turbolinks': false」を追記-->
+                  <%= link_to "カテゴリー", admin_dog_categories_path, class: "fas fa-paw nav-link text-light", 'data-turbolinks': false %>
                 </li>
               <% else %>
                 <li class="nav-item text-light">

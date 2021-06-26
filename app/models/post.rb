@@ -30,10 +30,6 @@ class Post < ApplicationRecord
 
   #top画面のワンちゃんから検索機能のメソッドを定義
   def self.dog_search(dog_category_id, age, gender)
-    if dog_category_id.empty? && age.empty? && gender.empty?
-      return []
-    end
-
     result = self.joins(:dog)
     if dog_category_id.present?
       result = result.where(dogs:{dog_category_id: dog_category_id})
