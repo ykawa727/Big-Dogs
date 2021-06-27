@@ -105,8 +105,8 @@
 
       <div class="col-sm-6 border">
         <%= answer.body %>
-        <div id="reference_area_<%= answer.id %>">
-          <%= render partial: 'references/reference', locals: { answer: answer} %>
+        <div id="answer_favorite_area_<%= answer.id %>">
+          <%= render partial: 'answer_favorites/answer_favorites', locals: { answer: answer} %>
         </div>
       </div>
       <% end %>
