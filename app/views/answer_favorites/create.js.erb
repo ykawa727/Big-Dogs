@@ -1,0 +1,1 @@
+$('#answer_favorite_area_<%= @answer.id %>').html("<%= j(render partial: 'answer_favorites/answer_favorites', locals: { answer: @answer}) %>");

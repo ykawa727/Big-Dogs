@@ -8,7 +8,7 @@ class DogOwner < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :cognitions, dependent: :destroy
-  has_many :references, dependent: :destroy
+  has_many :answer_favorites, dependent: :destroy
 
   attachment :image
 

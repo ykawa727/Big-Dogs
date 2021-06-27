@@ -1,0 +1,13 @@
+<% if answer.answer_favorited_by?(current_dog_owner) %>
+  <p class="text-right">
+  <%= link_to post_answer_answer_favorites_path(@post, answer), method: :delete, remote: true do %>
+    ♥<%= answer.answer_favorites.count %> 参考になった！
+  <% end %>
+  </p>
+<% else %>
+  <p class="text-right">
+  <%= link_to post_answer_answer_favorites_path(@post, answer), method: :post, remote: true do %>
+    ♡<%= answer.answer_favorites.count %> 参考になった！
+  <% end %>
+  </p>
+<% end %>
