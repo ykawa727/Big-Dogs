@@ -12,8 +12,12 @@ Rails.application.routes.draw do
     end
 
       get '/about' => 'homes#about'
-      get '/dog_owners/withdrawal' => 'dog_owners#withdrawal', as: 'withdrawal_dog_owner'
-      resources :dog_owners, only: [:show, :edit, :update, :destroy]
+      #get '/dog_owners/withdrawal' => 'dog_owners#withdrawal', as: 'withdrawal_dog_owner'
+      resources :dog_owners, only: [:show, :edit, :update, :destroy] do
+        collection do
+          get 'withdrawal'
+        end 
+      end
       resources :dogs
       resources :posts, only: [:new, :create, :index, :show, :destroy] do
         resource :cognitions, only: [:create, :destroy]
