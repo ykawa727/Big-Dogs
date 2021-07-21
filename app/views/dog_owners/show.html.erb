@@ -100,4 +100,39 @@
     </div>
   </div>
 
+  <div class="row mt-3">
+    <div class="col-sm-2">My 投稿一覧</div>
+    <table class="table">
+      <% @posts.each do |post| %>
+      <tr>
+
+      <% if dog_owner_signed_in? %>
+        <td>
+          <%= link_to post_path(post.id), class: "posts-link" do %>
+            <div><%= attachment_image_tag post.dog, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %></div>
+            <div><%= post.dog.name %></div>
+          <% end %>
+        </td>
+        <td>
+        <%= link_to post_path(post.id), class: "posts-link" do %>
+          <div><%= post.dog.dog_category.category %></div>
+          <div><%= post.dog.age %></div>
+          <div><%= post.dog.gender %></div>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to post_path(post.id), class: "posts-link" do %>
+          <div><%= post.title %></div>
+          <div class="border-top"><%= post.body.truncate(60) %></div>
+          <p class="text-right"><%= "#{post.answers.count} 個の回答" %></p>
+        <% end %>
+        </td>
+      <% end %>
+
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @posts %>
+  </div>
+
 </div>
