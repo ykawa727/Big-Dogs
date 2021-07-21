@@ -1,10 +1,11 @@
 class DogOwnersController < ApplicationController
   before_action :authenticate_dog_owner!
-  
+
   def show
     @dog_owner = DogOwner.find(params[:id])
     @dogs = @dog_owner.dogs
     #@dog = @dogs
+    @posts = Post.where(dog_owner_id: current_dog_owner.id).page(params[:page]).reverse_order
   end
 
   def edit
